@@ -13,13 +13,13 @@ namespace SUpdater.FolderUpdater
 		public static FileInfoHash[] GetRemoteFileInfo(string name)
 			=> informator.GetRemoteTable(name);
 
-		public static FileInfoHash[] GetLocalFileInfo(string name)
+		public static FileInfoHash[] GetLocalFileInfo(string name, string path)
 		{
-			List<string> ls = GetRecursFiles(Environment.CurrentDirectory + "\\" + name);
+			List<string> ls = GetRecursFiles(path + "\\" + name);
 			List<FileInfoHash> result = new List<FileInfoHash>();
 			foreach (string fname in ls)
 			{
-				result.Add(new FileInfoHash('.' + fname.Replace(Environment.CurrentDirectory, "").Replace('\\', '/'), GetHash(fname) + "\n"));
+				result.Add(new FileInfoHash('.' + fname.Replace(path, "").Replace('\\', '/'), GetHash(fname) + "\n"));
 			}
 			return result.ToArray();
 		}

@@ -7,11 +7,13 @@ namespace SUpdater.FolderUpdater
 	{
 		static FileInfoHash[] RemoteFiles = new FileInfoHash[1];
 		static FileInfoHash[] LocalFiles = new FileInfoHash[1];
+		public static string PathToFolderLocal;
 		public static double MaxSpeed = 10000;
+
 		private static void UpdateTables(string name)
 		{
 			RemoteFiles = TableController.GetRemoteFileInfo(name);
-			LocalFiles = TableController.GetLocalFileInfo(name);
+			LocalFiles = TableController.GetLocalFileInfo(name, PathToFolderLocal);
 		}
 		public static void SetAddress(string info)
 		{
