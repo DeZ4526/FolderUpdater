@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SUpdater.FolderUpdater.RemoteInformators
 {
-	class HTTPInformator : IRemoteInformator
+	public class HTTPInformator : IRemoteInformator
 	{
 		public string Address { get; private set; }
 

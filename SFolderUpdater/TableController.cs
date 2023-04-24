@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 
 namespace SUpdater.FolderUpdater
 {
-	static class TableController
+	public static class TableController
 	{
 		public static IRemoteInformator informator = new HTTPInformator();
 
@@ -37,22 +37,22 @@ namespace SUpdater.FolderUpdater
 		}
 		private static List<string> GetRecursFiles(string start_path)
 		{
-			List<string> ls = new List<string>();
+			List<string> results = new List<string>();
 			try
 			{
 				string[] folders = Directory.GetDirectories(start_path);
 				foreach (string folder in folders)
 				{
-					ls.AddRange(GetRecursFiles(folder));
+					results.AddRange(GetRecursFiles(folder));
 				}
 				string[] files = Directory.GetFiles(start_path);
 				foreach (string filename in files)
 				{
-					ls.Add(filename);
+					results.Add(filename);
 				}
 			}
 			catch { }
-			return ls;
+			return results;
 		}
 	}
 }

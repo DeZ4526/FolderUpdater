@@ -1,6 +1,6 @@
 ﻿namespace SUpdater.FolderUpdater.RemoteInformators
 {
-	internal interface IRemoteInformator
+	public interface IRemoteInformator
 	{
 		void SetAddress(string info);
 		string GetAddress();

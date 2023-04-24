@@ -1,6 +1,6 @@
 ﻿namespace SUpdater.FolderUpdater
 {
-	class FileInfoHash
+	public class FileInfoHash
 	{
 		public string Name;
 		public string MD5;

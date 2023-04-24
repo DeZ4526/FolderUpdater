@@ -2,8 +2,14 @@
 
 namespace SUpdater.FolderUpdater
 {
-	static class TableComparator
+	public static class TableComparator
 	{
+		/// <summary>
+		/// Поиск новых файлов на локальном ПК
+		/// </summary>
+		/// <param name="remote">Файлы на удаленном сервере</param>
+		/// <param name="local">Файлы на локаьном ПК</param>
+		/// <returns></returns>
 		public static FileInfoHash[] GetNewLocalFiles(FileInfoHash[] remote, FileInfoHash[] local)
 		{
 			List<FileInfoHash> differences = new List<FileInfoHash>();
@@ -26,6 +32,12 @@ namespace SUpdater.FolderUpdater
 				return false;
 			}
 		}
+		/// <summary>
+		/// Поиск недостоющих или недостоверных файлов на локальном ПК
+		/// </summary>
+		/// <param name="remote">Файлы на удаленном сервере</param>
+		/// <param name="local">Файлы на локаьном ПК</param>
+		/// <returns></returns>
 		public static FileInfoHash[] GetDifferences(FileInfoHash[] remote, FileInfoHash[] local)
 		{
 			List<FileInfoHash> differences = new List<FileInfoHash>();
@@ -34,9 +46,7 @@ namespace SUpdater.FolderUpdater
 				if (!Compare(remote[i]))
 				{
 					differences.Add(new FileInfoHash(remote[i].Name, remote[i].MD5));
-					//Console.WriteLine(local[i].Name);
 				}
-
 			}
 			return differences.ToArray();
 			bool Compare(FileInfoHash _remote)

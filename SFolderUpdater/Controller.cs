@@ -3,7 +3,7 @@ using System.IO;
 
 namespace SUpdater.FolderUpdater
 {
-	static class Controller
+	public static class Controller
 	{
 		static FileInfoHash[] RemoteFiles = new FileInfoHash[1];
 		static FileInfoHash[] LocalFiles = new FileInfoHash[1];
@@ -28,7 +28,7 @@ namespace SUpdater.FolderUpdater
 				OnStartDownload?.Invoke(file.Length);
 				foreach (var item in file)
 				{
-					await Downloader.FileDownloader.DownloadUriWithThrottling(new Uri(TableController.informator.GetAddress() + item.Name), item.Name, MaxSpeed);
+					Downloader.FileDownloader.DownloadUriWithThrottling(new Uri(TableController.informator.GetAddress() + item.Name), item.Name, MaxSpeed);
 					OnFileDownload?.Invoke(item);
 				}
 				OnEndDownload?.Invoke();
